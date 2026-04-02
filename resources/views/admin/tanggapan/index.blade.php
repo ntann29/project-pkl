@@ -12,9 +12,8 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>No</th>
                                 <th>Deskripsi Pengaduan</th>
-                                <th>Foto Bukti</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -24,13 +23,6 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->deskripsi }}</td>
-                                <td>
-                                    @if ($item->foto_bukti)
-                                    <img src="{{ asset('storage/' . $item->foto_bukti) }}" width="80">
-                                    @else
-                                    <span class="text-muted">Tidak ada</span>
-                                    @endif
-                                </td>
                                  <td>
                             @if($item->status === 'proses')
                             <span class="badge bg-warning text-dark">Proses</span>
