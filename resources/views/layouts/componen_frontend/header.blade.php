@@ -10,7 +10,7 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="\" class="active">Home</a></li>
 
                 <li class="nav-item dropdown">
                     @guest
@@ -19,7 +19,6 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                         <li><a class="dropdown-item" href="{{ route('login') }}"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
-                        <li><a class="dropdown-item" href="{{ route('register') }}"><i class="bi bi-pencil-square"></i> Register</a></li>
                     </ul>
                     @else
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

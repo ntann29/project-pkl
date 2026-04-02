@@ -20,11 +20,7 @@
                     <span class="badge bg-secondary">{{ ucfirst($pengaduansaran->status) }}</span>
                     @endif
                 </p>
-                <p><strong>Tanggal Dibuat:</strong> {{ $pengaduansaran->created_at->format('d M Y, H:i') }}</p>
-                @if ($pengaduansaran->foto_bukti)
-                <p><strong>Foto Bukti:</strong></p>
-                <img src="{{ asset('storage/' . $pengaduansaran->foto_bukti) }}" alt="Foto Bukti" width="200">
-                @endif
+                <p><strong>Tanggal Dibuat:</strong> {{ $pengaduansaran->created_at->format('d M Y') }}</p>
             </div>
         </div>
 
@@ -35,12 +31,6 @@
             <div class="card-body">
                 <p><strong>Isi Tanggapan:</strong></p>
                 <p>{{ $pengaduansaran->tanggapan->isi_tanggapan }}</p>
-
-                @if($pengaduansaran->tanggapan->foto_bukti)
-                <p><strong>Foto Balasan:</strong></p>
-                <img src="{{ asset('storage/' . $pengaduansaran->tanggapan->foto_bukti) }}" width="200" class="img-thumbnail">
-                @endif
-
                 <p class="text-muted mt-2"><small>Ditanggapi pada: {{ $pengaduansaran->tanggapan->created_at->format('d M Y, H:i') }}</small></p>
             </div>
         </div>
@@ -167,7 +157,7 @@
             <div class="card-body">
                 <p><strong>Nama:</strong> {{ $pengaduansaran->user->name }}</p>
                 <p><strong>Email:</strong> {{ $pengaduansaran->user->email }}</p>
-                <p><strong>Role:</strong> {{ ucfirst($pengaduansaran->user->role) }}</p>
+                <p><strong>Pengirim:</strong> {{ ucfirst($pengaduansaran->user->role) }}</p>
             </div>
         </div>
 

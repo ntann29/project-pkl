@@ -1,53 +1,81 @@
 <style>
     .app-header {
-        margin-top: -70px;
-        /* naikkan header ke atas */
+        background: #ffffff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 10px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
     }
 
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    .brand-logo img {
+        height: 35px;
+    }
+
+    .nav-link img {
+        border-radius: 50%;
+        border: 2px solid #eee;
+        transition: 0.3s;
+    }
+
+    .nav-link img:hover {
+        border-color: #6a11cb;
+    }
+
+    .dropdown-menu {
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        padding: 10px;
+    }
+
+    .btn-outline-primary {
+        border-radius: 8px;
+    }
 </style>
 
 <header class="app-header">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="brand-logo d-flex align-items-center justify-content-between">
-            <a href="./index.html" class="text-nowrap logo-img">
-                <img src="{{ asset('backend/images/logos/logo.svg') }}" alt="" />
-            </a>
-            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
-                <i class="ti ti-x fs-6"></i>
-            </div>
-        </div>
-        <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ asset('backend/images/profile/user-1.jpg') }}" alt="User" width="35" height="35" class="rounded-circle">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                        <div class="message-body">
-                            <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                <i class="ti ti-user fs-6"></i>
-                                <p class="mb-0 fs-3">My Profile</p>
-                            </a>
-                            <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                <i class="ti ti-mail fs-6"></i>
-                                <p class="mb-0 fs-3">My Account</p>
-                            </a>
-                            <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                <i class="ti ti-list-check fs-6"></i>
-                                <p class="mb-0 fs-3">My Task</p>
-                            </a>
-                            <a class="btn btn-outline-primary mx-3 mt-2 d-block" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
+    <nav class="navbar navbar-expand-lg">
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
+        <!-- Logo -->
+        <div class="brand-logo d-flex align-items-center gap-2">
+            <a href="#" class="text-nowrap logo-img">
+                <img src="{{ asset('backend/images/logos/logo.svg') }}" alt="Logo" />
+            </a>
+        </div>
+
+        <!-- Right Menu -->
+        <div class="d-flex align-items-center ms-auto">
+            <ul class="navbar-nav flex-row align-items-center">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link d-flex align-items-center" href="#" id="drop2" data-bs-toggle="dropdown">
+                        <img src="{{ asset('backend/images/profile/user-1.jpg') }}" width="35" height="35">
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="btn btn-outline-primary w-100"
+                           href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
                 </li>
+
             </ul>
         </div>
+
     </nav>
 </header>

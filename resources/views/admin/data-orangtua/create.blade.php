@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Data Siswa Baru</h4>
+                <h4 class="card-title">Data OrangTua Baru</h4>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('admin.data-orangtua.store') }}" enctype="multipart/form-data">
@@ -48,9 +48,7 @@
                             <option value="{{ $siswa->id }}">{{ $siswa->nama }}</option>
                             @endforeach
                         </select>
-                    </div>
-
-
+                    </div><br>
                     <button type="submit" class="btn btn-primary">Kirim</button>
                     <a href="{{ route('admin.data-orangtua.index') }}" class="btn btn-secondary">Kembali</a>
                 </form>

@@ -12,11 +12,10 @@
                         <table class="table table-bordered table-responsive-sm">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>No</th>
                                     <th>Status User</th>
                                     <th>Kategori</th>
                                     <th>Deskripsi</th>
-                                    <th>Foto Bukti</th>
                                     <th>Status</th>
                                     <th>Tanggal</th>
                                 </tr>
@@ -28,22 +27,15 @@
                                     <td>{{ $item->status_user }}</td>
                                     <td>{{ ucfirst($item->kategori) }}</td>
                                     <td>{{ $item->deskripsi }}</td>
-                                    <td>
-                                        @if($item->foto_bukti)
-                                        <img src="{{ asset('storage/' . $item->foto_bukti) }}" alt="Bukti" width="80">
+                                     <td>
+                                        @if($item->status === 'proses')
+                                        <span class="badge bg-warning text-dark">Proses</span>
+                                        @elseif($item->status === 'selesai')
+                                        <span class="badge bg-success">Selesai</span>
                                         @else
-                                        <span class="text-muted">Tidak ada</span>
+                                        <span class="badge bg-secondary">{{ ucfirst($item->status) }}</span>
                                         @endif
                                     </td>
-                                     <td>
-                            @if($item->status === 'proses')
-                            <span class="badge bg-warning text-dark">Proses</span>
-                            @elseif($item->status === 'selesai')
-                            <span class="badge bg-success">Selesai</span>
-                            @else
-                            <span class="badge bg-secondary">{{ ucfirst($item->status) }}</span>
-                            @endif
-                        </td>
                                     <td>{{ $item->created_at->format('d M Y') }}</td>
                                     {{-- <td>
                                         <a href="{{ route('admin.pengaduansaran.show', $item->id) }}" class="btn btn-sm btn-info mr-1" data-toggle="tooltip" title="Lihat">

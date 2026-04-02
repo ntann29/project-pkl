@@ -15,8 +15,14 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('nama');
             $table->string('jenis_kelamin');
-            $table->string('nisn');
-            
+            $table->string('nisn')->unique();
+
+            // ✅ Tambahin kelas
+            $table->string('kelas')->nullable();
+
+            // ✅ Email manual
+            $table->string('email')->unique();
+
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
 

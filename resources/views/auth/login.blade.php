@@ -1,56 +1,117 @@
 @extends('layouts.logis')
 
 @section('content')
-<div class="authincation h-100">
-    <div class="container-fluid h-100">
-        <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
-            <div class="col-md-6">
-                <div class="authincation-content">
-                    <div class="row no-gutters">
-                        <div class="col-xl-12">
-                            <div class="auth-form">
-                                <h4 class="text-center mb-4">Sign in your account</h4>
-                                <form method="POST" action="{{ route('login') }}">
-                                @csrf
-                                    <div class="form-group">
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                        @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+<style>
+body {
+    background: url('/images/bg.jpg') no-repeat center center/cover;
+}
 
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-row d-flex justify-content-between mt-4 mb-2">                                        
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn btn-primary w-100 mb-2">
-                                                {{ __('Login') }}
-                                            </button>
-                                            @if (Route::has('password.request'))
-                                            <div class="text-end">
-                                                <a class="btn btn-link p-0" href="{{ route('password.request') }}">
-                                                    {{ __('Forgot Your Password?') }}
-                                                </a>
-                                            </div>
-                                            @endif
-                                        </div>
-                                    </div>                                    
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+.overlay {
+    background: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+}
+
+/* CARD LOGIN */
+.login-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    width: 380px;
+    color: #333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* TEXT */
+.login-card h4 {
+    font-weight: 600;
+    color: #333;
+}
+
+.login-card p {
+    font-size: 14px;
+    color: #777;
+}
+
+/* INPUT */
+.form-control {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+.form-control:focus {
+    background: #fff;
+    border-color: #6a11cb;
+    box-shadow: 0 0 0 2px rgba(106,17,203,0.1);
+    color: #000;
+}
+
+/* PLACEHOLDER */
+.form-control::placeholder {
+    color: #999;
+}
+
+/* LABEL */
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* BUTTON */
+.btn-login {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border: none;
+    font-weight: 500;
+    color: white;
+}
+
+.btn-login:hover {
+    opacity: 0.9;
+}
+</style>
+
+<div class="overlay d-flex justify-content-center align-items-center">
+    <div class="login-card shadow">
+
+        <!-- OPTIONAL BRAND -->
+        <div class="text-center mb-3">
+            <h3 style="font-weight:700; color:#6a11cb;">SuaraKu</h3>
         </div>
+
+        <h4 class="text-center mb-1">Login</h4>
+        <p class="text-center mb-4">Layanan Aspirasi & Keluhan Online</p>
+
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="email" name="email"
+                    class="form-control @error('email') is-invalid @enderror"
+                    value="{{ old('email') }}" placeholder="Masukkan email" required autofocus>
+
+                @error('email')
+                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="password" name="password"
+                    class="form-control @error('password') is-invalid @enderror"
+                    placeholder="Masukkan password" required>
+
+                @error('password')
+                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <button class="btn btn-login w-100 mt-2">Login</button>
+        </form>
+
     </div>
 </div>
+
 @endsection

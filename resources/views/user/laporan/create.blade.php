@@ -6,7 +6,7 @@
     <img src="{{ asset('frontend/assets/img/hero-bg.jpg')}}" alt="" data-aos="fade-in">
     <div class="container d-flex flex-column align-items-center">
         <h2 data-aos="fade-up" data-aos-delay="100">SUARA ANDA, PRIORITAS KAMI.</h2>
-        <p data-aos="fade-up" data-aos-delay="200">Sistem Pengaduan dan Saran Orang Tua & Siswa Secara Online</p>
+        <p data-aos="fade-up" data-aos-delay="200">Layanan Aspirasi & Keluhan Online</p>
     </div>
 </section>
 
@@ -80,9 +80,6 @@
                         </div>
                         <div class="col-md-12">
                             <textarea class="form-control" name="deskripsi" rows="4" placeholder="Masukkan Pengaduan" required></textarea>
-                        </div>
-                        <div class="col-md-12">
-                            <input type="file" name="foto_bukti" class="form-control">
                         </div>
                         <div class="col-md-12 text-center">
                             <button type="submit" class="btn btn-primary">Kirim Pengaduan</button>

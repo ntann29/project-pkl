@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <h2 data-aos="fade-up" data-aos-delay="100">Sistem Informasi</h2>
-                <p data-aos="fade-up" data-aos-delay="200">Pengaduan Saran Orang Tua/Siswa secara online</p>
+                <p data-aos="fade-up" data-aos-delay="200">Layanan Aspirasi & keluhan Online</p>
                 <a href="#riwayat" class="btn btn-primary mt-3 px-4 py-2 fs-5">Riwayat</a>
             </div>
         </div>
@@ -44,8 +44,6 @@
                         <th>Deskripsi</th>
                         <th>Status</th>
                         <th>Tanggal</th>
-                        <th>Foto Bukti</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -65,13 +63,6 @@
                             @endif
                         </td>
                         <td>{{ $item->created_at->format('d M Y') }}</td>
-                        <td>
-                            @if($item->foto_bukti)
-                            <img src="{{ asset('storage/' . $item->foto_bukti) }}" alt="Bukti" width="80">
-                            @else
-                            <span class="text-muted">Tidak ada</span>
-                            @endif
-                        </td>
                     </tr>
                     @empty
                     <tr>

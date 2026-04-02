@@ -4,7 +4,7 @@
     <img src="{{ asset('frontend/assets/img/hero-bg.jpg')}}" alt="" data-aos="fade-in">
     <div class="container d-flex flex-column align-items-center">
         <h2 data-aos="fade-up" data-aos-delay="100">SUARA ANDA, PRIORITAS KAMI.</h2>
-        <p data-aos="fade-up" data-aos-delay="200">Sistem Pengaduan dan Saran Orang Tua & Siswa Secara Online</p>
+        <p data-aos="fade-up" data-aos-delay="200">Layanan Aspirasi & Keluhan Online</p>
     </div>
 </section>
 
@@ -30,7 +30,6 @@
                         <th>Deskripsi</th>
                         <th>Status</th>
                         <th>Tanggal</th>
-                        <th>Foto Bukti</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -50,13 +49,6 @@
                             @endif
                         </td>
                         <td>{{ $item->created_at->format('d M Y') }}</td>
-                        <td>
-                            @if($item->foto_bukti)
-                            <img src="{{ asset('storage/' . $item->foto_bukti) }}" alt="Bukti" width="80">
-                            @else
-                            <span class="text-muted">Tidak ada</span>
-                            @endif
-                        </td>
                         <td>
                             <a href="{{ route('laporan.detail', $item->id) }}" class="btn btn-sm btn-info">Detail</a>
                         </td>
