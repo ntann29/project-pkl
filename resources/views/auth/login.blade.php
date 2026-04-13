@@ -4,84 +4,125 @@
 
 <style>
 body {
-    background: url('/images/bg.jpg') no-repeat center center/cover;
-}
-
-.overlay {
-    background: rgba(0, 0, 0, 0.5);
+    margin: 0;
     height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
 }
 
-/* CARD LOGIN */
+/* BACKGROUND FOTO KOMPUTER */
+.bg-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c') no-repeat center center/cover;
+    filter: blur(5px) grayscale(30%);
+    transform: scale(1.05);
+    z-index: -2;
+}
+
+/* OVERLAY ABU */
+.bg-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(40, 40, 40, 0.35);
+    z-index: -1;
+}
+
+/* CARD */
 .login-card {
     background: #ffffff;
-    border-radius: 15px;
-    padding: 30px;
+    border-radius: 16px;
+    padding: 40px;
     width: 380px;
-    color: #333;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    animation: fadeIn 0.6s ease;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* TEXT */
-.login-card h4 {
-    font-weight: 600;
+.brand {
+    font-weight: 700;
     color: #333;
 }
 
-.login-card p {
+.subtitle {
     font-size: 14px;
     color: #777;
 }
 
 /* INPUT */
 .form-control {
-    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 12px;
     border: 1px solid #ddd;
-    color: #333;
+    font-size: 14px;
 }
 
 .form-control:focus {
-    background: #fff;
-    border-color: #6a11cb;
-    box-shadow: 0 0 0 2px rgba(106,17,203,0.1);
-    color: #000;
-}
-
-/* PLACEHOLDER */
-.form-control::placeholder {
-    color: #999;
+    border-color: #4c84ff;
+    box-shadow: 0 0 0 2px rgba(76,132,255,0.15);
 }
 
 /* LABEL */
 label {
-    font-size: 14px;
-    margin-bottom: 5px;
+    font-size: 13px;
     color: #555;
 }
 
 /* BUTTON */
 .btn-login {
-    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    background: linear-gradient(135deg, #4c84ff, #6fa4ff);
     border: none;
-    font-weight: 500;
-    color: white;
+    border-radius: 10px;
+    padding: 12px;
+    color: #fff;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(76,132,255,0.25);
 }
 
 .btn-login:hover {
-    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(76,132,255,0.35);
+}
+
+.btn-login:active {
+    transform: scale(0.98);
+}
+
+/* ERROR */
+.invalid-feedback {
+    font-size: 12px;
 }
 </style>
 
-<div class="overlay d-flex justify-content-center align-items-center">
-    <div class="login-card shadow">
+<!-- BACKGROUND -->
+<div class="bg-image"></div>
+<div class="bg-overlay"></div>
 
-        <!-- OPTIONAL BRAND -->
-        <div class="text-center mb-3">
-            <h3 style="font-weight:700; color:#6a11cb;">SuaraKu</h3>
+<!-- CONTENT -->
+<div class="d-flex justify-content-center align-items-center" style="height:100vh;">
+    <div class="login-card">
+
+        <div class="text-center mb-4">
+            <h3 class="brand">SuaraKu</h3>
+            <p class="subtitle">Layanan Aspirasi & Keluhan</p>
         </div>
-
-        <h4 class="text-center mb-1">Login</h4>
-        <p class="text-center mb-4">Layanan Aspirasi & Keluhan Online</p>
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -90,11 +131,7 @@ label {
                 <label>Email</label>
                 <input type="email" name="email"
                     class="form-control @error('email') is-invalid @enderror"
-                    value="{{ old('email') }}" placeholder="Masukkan email" required autofocus>
-
-                @error('email')
-                    <div class="invalid-feedback d-block">{{ $message }}</div>
-                @enderror
+                    value="{{ old('email') }}" placeholder="Masukkan email" required>
             </div>
 
             <div class="mb-3">
@@ -102,13 +139,9 @@ label {
                 <input type="password" name="password"
                     class="form-control @error('password') is-invalid @enderror"
                     placeholder="Masukkan password" required>
-
-                @error('password')
-                    <div class="invalid-feedback d-block">{{ $message }}</div>
-                @enderror
             </div>
 
-            <button class="btn btn-login w-100 mt-2">Login</button>
+            <button class="btn btn-login w-100 mt-3">Login</button>
         </form>
 
     </div>

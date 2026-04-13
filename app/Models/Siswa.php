@@ -20,7 +20,7 @@ class Siswa extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(\App\Models\User::class, 'id_user');
     }
 
     public function orangtua()

@@ -38,9 +38,9 @@ class User extends Authenticatable
         return $this->hasOne(Pengaduansaran::class, 'id_user');
     }
 
-    public function siswas()
+    public function siswa()
     {
-        return $this->hasOne(Siswa::class, 'id_user');
+        return $this->hasOne(\App\Models\Siswa::class, 'id_user');
     }
 
     public function orangtuas()
